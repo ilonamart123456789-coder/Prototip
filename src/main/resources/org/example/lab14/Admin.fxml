@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="602.0" style="-fx-background-color: #E7E5E5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.lab14.Admin">
+    <children>
+        <Pane layoutY="53.0" prefHeight="347.0" prefWidth="198.0" style="-fx-background-color: white; -fx-border-width: 1; -fx-border-color: #3B3B3B;" />
+        <Pane layoutX="-18.0" prefHeight="54.0" prefWidth="620.0" style="-fx-background-color: #3B3B3B;">
+            <children>
+                <Label layoutX="20.0" layoutY="17.0" style="-fx-font-weight: bold;" text="Панель администратора" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+                <Label layoutX="502.0" layoutY="17.0" prefHeight="21.0" prefWidth="50.0" style="-fx-font-weight: bold;" text="Админ" textFill="WHITE">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </Label>
+                <Button layoutX="558.0" layoutY="15.0" mnemonicParsing="false" onAction="#logout" text="Выход" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>
