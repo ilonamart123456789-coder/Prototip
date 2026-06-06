@@ -1,7 +1,7 @@
 module org.example.lab14 {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.sql; // Эта строка решает вашу ошибку
+    requires java.sql;
 
     opens org.example.lab14 to javafx.fxml;
     exports org.example.lab14;

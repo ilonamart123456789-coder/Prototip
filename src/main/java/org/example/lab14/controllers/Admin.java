@@ -5,7 +5,7 @@ import javafx.collections.FXCollections; // обновляемые списки
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group; // Контейнер для группировки надписей у графика
-import javafx.scene.Node; // Базовый класс для любого визуального элемента на экране(низ графиков)
+import javafx.scene.Node;
 import javafx.scene.chart.BarChart; // Класс для создания графика
 import javafx.scene.chart.NumberAxis; // Класс для создания числовой оси
 import javafx.scene.chart.XYChart; // Базовый класс для работы с осями и данными графика
@@ -235,7 +235,7 @@ public class Admin {
             node.boundsInParentProperty().addListener((o, oldB, b) ->
                     dataText.relocate(
                             Math.round(b.getMinX() + b.getWidth() / 2 - dataText.prefWidth(-1) / 2),
-                            Math.round(b.getMinY() - 25)
+                            Math.round(b.getMinY() - 35)
                     )
             );
         });

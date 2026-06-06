@@ -71,7 +71,7 @@ public class Ofic {
             qtyColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
-            // НАСТРОЙКА: Выводим цену в таблице чека строго с двумя знаками после запятой
+            // Выводим цену в таблице чека строго с двумя знаками после запятой
             priceColumn.setCellFactory(tc -> new TableCell<CartItem, Double>() {
                 @Override
                 protected void updateItem(Double price, boolean empty) {
@@ -158,7 +158,7 @@ public class Ofic {
         Label nameLbl = new Label(item.getName());
         nameLbl.setStyle("-fx-font-weight: bold; -fx-font-size: 15px; -fx-wrap-text: true; -fx-alignment: center; -fx-text-fill: #222222;");
 
-        //цена (форматируем в double с двумя нулями)
+        //цена
         String priceStr = String.format(Locale.US, "%.2f", item.getPrice());
         Label priceLbl = new Label(priceStr + " руб");
         priceLbl.setStyle("-fx-font-size: 16px; -fx-text-fill: #1dc3f5; -fx-font-weight: bold;");
@@ -184,7 +184,7 @@ public class Ofic {
     }
 
     private void addToCart(MenuItem menuItem) { //добавление блюда в чек
-        for (CartItem cartItem : currentOrder) { // Проверяем: есть ли уже такое блюдо в корзине?
+        for (CartItem cartItem : currentOrder) { // есть ли уже такое блюдо в корзине?
             if (cartItem.getMenuItem().getId() == menuItem.getId()) { // Если ID совпадают
                 cartItem.increaseQuantity(); //увеличиваем количество
                 if (orderTableView != null) orderTableView.refresh(); //обновляем визуальную таблицу
@@ -223,7 +223,7 @@ public class Ofic {
     }
 
     @FXML void processPayment(ActionEvent event) { //кнопка"Оплатить"
-        if (currentOrder.isEmpty()) { // Проверка от дурака
+        if (currentOrder.isEmpty()) {
             showAlert("Ошибка", "Заказ пуст. Добавьте блюда перед оплатой.", Alert.AlertType.WARNING);
             return;
         }
@@ -232,13 +232,11 @@ public class Ofic {
         String date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")); // Форматируем дату
         String time = now.format(DateTimeFormatter.ofPattern("HH:mm:ss")); // Форматируем время
 
-        // Читаем сумму обратно как double
+        // Читаем сумму как double
         double total = Double.parseDouble(totalLabel.getText().replace(" руб", "").replace(",", "."));
         int tableNum = Integer.parseInt(tableComboBox.getValue());
         String waiterName = (Main.currentUser != null) ? Main.currentUser.getFio() : "Неизвестный"; // Берем ФИО текущего официанта
 
-        // Внимание: если ваш метод DatabaseHandler.createOrder принимает int, измените там тип на double,
-        // либо скастуйте total обратно в (int), написав (int) total
         int orderId = DatabaseHandler.createOrder(date, time, total, waiterName, currentReceiptNumber, tableNum); // Делаем запись в БД
 
         if (orderId != -1) { // Если ID чека получен
