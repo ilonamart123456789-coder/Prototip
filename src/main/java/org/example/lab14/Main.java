@@ -1,14 +1,14 @@
 package org.example.lab14;
 
-import javafx.application.Application;
+import javafx.application.Application;// управление жизненным циклом
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.lab14.models.User;
+import java.io.IOException;// датчика непредвиденных проблем
 
-import java.io.IOException;
-
+// преобразование в графику
 public class Main extends Application {
     private static Scene scene;
     public static User currentUser;
@@ -19,13 +19,14 @@ public class Main extends Application {
 
         stage.setTitle("Taste World - Система управления кафе");
 
-        //минимальные размеры окна
+        // минимальные размеры окна
         stage.setMinWidth(1300);
         stage.setMinHeight(800);
 
         stage.setScene(scene);
         stage.show();
     }
+    // смена окон
     public static void setRoot(String fxml) {
         try {
             scene.setRoot(loadFXML(fxml));
@@ -34,6 +35,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    // загрузка fxml в память
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml));
         return fxmlLoader.load();
