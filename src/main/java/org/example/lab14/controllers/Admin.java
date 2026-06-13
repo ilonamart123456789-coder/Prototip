@@ -46,7 +46,7 @@ public class Admin {
     @FXML private TableColumn<MenuItem, Integer> colMenuId, colMenuProdan;
     @FXML private TableColumn<MenuItem, String> colMenuName, colMenuCategory, colMenuSostav;
     @FXML private TableColumn<MenuItem, Double> colMenuPrice;
-    @FXML private TextField fldMenuName, fldMenuPrice, fldMenuSostav; // роля ввода для добавления нового блюда
+    @FXML private TextField fldMenuName, fldMenuPrice, fldMenuSostav; // поля ввода для добавления нового блюда
     @FXML private ComboBox<String> cmbMenuCategory; // выпадающий список для выбора категории нового блюда
 
     // ЭЛЕМЕНТЫ ВКЛАДКИ СОТРУДНИКИ
@@ -137,7 +137,7 @@ public class Admin {
     @FXML void showMenu(ActionEvent event) { selectTab(btnMenu, "Меню"); loadData(menuTable, DatabaseHandler.getAllMenu()); }
     @FXML void showEmployees(ActionEvent event) { selectTab(btnEmployees, "Сотрудники"); loadData(empTable, DatabaseHandler.getAllEmployees()); }
     @FXML void showOrders(ActionEvent event) { selectTab(btnOrders, "Заказы"); loadData(ordersTable, DatabaseHandler.getAllOrders()); }
-    @FXML void showCharts(ActionEvent event) { selectTab(btnCharts, "Статистика продаж"); updateChart(); }
+    @FXML void showCharts(ActionEvent event) { selectTab(btnCharts, "График выручки по официантам"); updateChart(); }
 
     // загрузка любого списка данных в любую таблицу
     private <T> void loadData(TableView<T> table, List<T> data) {
